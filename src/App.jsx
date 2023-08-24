@@ -6,8 +6,32 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import Layout from "./components/Layout";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+         axios
+      .get('https://fakestoreapi.com/users')
+      .then((res) => {
+        console.log(res)
+        setResults(res.data);
+        
+      });
+    }, []);
+
+    useEffect(() => {
+      if(results.length>0){
+        console.log(results);
+      }
+    }, [results]);
+
+
+  // const getUsers = () => {
+  //
+  // };
   return (
     <Router>
       <Layout>

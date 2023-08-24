@@ -5,9 +5,6 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <div>
-    <header>
-      <h1>Astrolabe</h1>
-    </header>
     <NavBar />
     <main>{children}</main>
     <Footer />
