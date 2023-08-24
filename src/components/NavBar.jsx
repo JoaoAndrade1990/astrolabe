@@ -1,9 +1,9 @@
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
 
     return (
-      <>
+      <div>
       <h1>NavBar</h1>
       <nav>
             <ul>
@@ -24,7 +24,7 @@ function NavBar() {
               </li>
             </ul>
           </nav>
-      </>
+      </div>
     )
   }
 

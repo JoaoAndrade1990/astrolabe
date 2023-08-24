@@ -10,15 +10,15 @@ import Layout from "./components/Layout";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />}/>
-        {/* <Route path="/category" element={<CategoryPage />} />
-        <Route path="/product" element={<ProductDetailsPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} /> */}
-        </Route>
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/category" element={<CategoryPage />} />
+          <Route path="/product" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
