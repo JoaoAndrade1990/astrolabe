@@ -68,10 +68,6 @@ const Footer = () => {
                   <h5>Help</h5>
                   <ul className='list-unstyled'>
                     {[
-                      'Help Center',
-                      'Order Status',
-                      'Size Charts',
-                      'Returns & Warranty',
                       'Contact Us',
                     ].map((item, index) => (
                       <li key={index}>
@@ -88,11 +84,7 @@ const Footer = () => {
                 <Col md={4} className='mb-sm-4 mb-md-0'>
                   <h5>About</h5>
                   <ul className='list-unstyled'>
-                    {[
-                      'About Us',
-                      'Responsibility',
-                      'Technology & Innovation',
-                      'Explore our stories',
+                    {/* {[
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
@@ -102,7 +94,7 @@ const Footer = () => {
                           {item}
                         </Link>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </Col>
               </Row>

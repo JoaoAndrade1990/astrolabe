@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="border-bottom">
       <div className="container ">
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <img
             src='src/assets/logo.svg'
             alt="Logo"
@@ -16,8 +16,7 @@ const Header = () => {
         
         <Navbar.Collapse id="basic-navbar-nav" className='d-flex justify-content-between'>
           <Nav>
-            <Nav.Link as={Link} to="/">Shop</Nav.Link>
-            <Nav.Link as={Link} to="/category">About</Nav.Link>
+            <Nav.Link as={Link} to="/category">Shop</Nav.Link>
           </Nav>
 
 
