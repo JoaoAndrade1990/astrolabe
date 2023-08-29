@@ -26,7 +26,7 @@ const Footer = () => {
       <footer className="border-top mt-4">
         <Container className="py-4">
           <Row class="d-flex justify-content-center">
-            <Col md={6} className="mb-sm-4 mb-md-0">
+            <Col md={9} className="mb-sm-4 mb-md-0">
               <h4>Signup for our newsletter</h4>
               <p style={{ fontSize: "14px" }}>
                 Be the first to know about our special, new product launches,
@@ -47,7 +47,7 @@ const Footer = () => {
                 </InputGroup>
               </Form>
             </Col>
-            <Col md={2} className="mb-sm-4 mb-md-0">
+            <Col md={3} className="mb-sm-4 mb-md-0">
               <h5>Shop</h5>
               <ul className="list-unstyled">
                 {categories.map((item, index) => (

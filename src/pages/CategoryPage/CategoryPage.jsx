@@ -10,7 +10,7 @@ function CategoryPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products').then((res) => {
+    axios.get("https://fakestoreapi.com/products").then((res) => {
       setResults(res.data);
       setLoading(false);
     });
@@ -24,18 +24,28 @@ function CategoryPage() {
         <>
           <h2 className="popular-products-title">Popular Products</h2>
           <Row>
-            {results.map((product) => (
-              <Col
-                key={product.id}
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                className="mb-4 d-flex align-items-stretch"
-              >
-                <ProductCard product={product} />
-              </Col>
-            ))}
+            <Col 
+              xs={12}
+              sm={12}
+              md={3}>
+              <h3>Categories</h3>
+            </Col>
+            <Col md={9}>
+              <Row>
+              {results.map((product) => (
+                <Col
+                  key={product.id}
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  lg={4}
+                  className="mb-4 d-flex align-items-stretch"
+                >
+                  <ProductCard product={product} />
+                </Col>
+              ))}
+              </Row>
+            </Col>
           </Row>
         </>
       )}
