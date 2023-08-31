@@ -1,18 +1,31 @@
-import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Loading from "../../components/Loading/Loading";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import Loading from '../../components/Loading/Loading';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useCart } from '../../hooks/cart';
 
 function ProductDetailsPage() {
-  const [results, setResults] = useState([]);
+  const { id } = useParams();
+  const { addToCart } = useCart();
+  const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products/1").then((res) => {
-      setResults(res.data.id);
-      setLoading(false);
-    });
-  }, []);
+    axios
+      .get(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => {
+        setResult(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, [id]);
+
+  const handleAddToCart = () => {
+    addToCart(result);
+  };
 
   return (
     <Container>
@@ -20,15 +33,26 @@ function ProductDetailsPage() {
         <Loading />
       ) : (
         <>
-        <h1>Old Coin</h1>
           <Row>
-            <Col
-            >
+            <Col xs={12} md={6}>
+              <img
+                src={result.image}
+                alt={result.title}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '400px',
+                  display: 'block',
+                  margin: '0 auto',
+                }}
+              />
             </Col>
-            <Col>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi aut perferendis, voluptatum deserunt iure harum illum minima aliquam sit molestiae earum fugit qui modi quod, a dolorum voluptatibus repellendus suscipit!</p>
-            <p>Price: 299.99€</p>
-            {/* <button variant='dark' className='product-card-button btn-sm'>Add to Cart</button> */}
+            <Col xs={12} md={6}>
+              <h1>{result.title}</h1>
+              <p>{result.description}</p>
+              <p>Price: {result.price}€</p>
+              <Button variant='dark' onClick={handleAddToCart}>
+                Add to Cart
+              </Button>
             </Col>
           </Row>
         </>

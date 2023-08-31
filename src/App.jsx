@@ -6,20 +6,23 @@ import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import Layout from './components/Layout';
+import { CartProvider } from './hooks/cart.jsx';
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/category' element={<CategoryPage />} />
-          <Route path='/product' element={<ProductDetailsPage />} />
-          <Route path='/cart' element={<CartPage />} />
-          <Route path='/checkout' element={<CheckoutPage />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/category' element={<CategoryPage />} />
+            <Route path='/product/:id' element={<ProductDetailsPage />} />
+            <Route path='/cart' element={<CartPage />} />
+            <Route path='/checkout' element={<CheckoutPage />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </CartProvider>
   );
 }
 

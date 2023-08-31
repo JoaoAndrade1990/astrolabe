@@ -42,24 +42,22 @@ function CategoryPage() {
             <Col xs={12} sm={12} md={3}>
               <h4>Categories</h4>
               <Form>
-                <div
-                key="all" className="mb-3"
-                >
+                <div key='all' className='mb-3'>
                   <Form.Check
-                      type='radio'
-                      name="category"
-                      id="all"
-                      label="All Categories"
-                      className='text-capitalize'
-                      onClick={() => filteredProducts(null)}
-                      checked={selectedCategory === null}
-                    />
+                    type='radio'
+                    name='category'
+                    id='all'
+                    label='All Categories'
+                    className='text-capitalize'
+                    onClick={() => filteredProducts(null)}
+                    checked={selectedCategory === null}
+                  />
                 </div>
                 {categories.map((category) => (
                   <div key={`${category}`} className='mb-3'>
                     <Form.Check
                       type='radio'
-                      name="category"
+                      name='category'
                       id={`${category}`}
                       label={`${category}`}
                       className='text-capitalize'
