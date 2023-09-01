@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import './ProductCard.css';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../hooks/cart';
+import CartContext from '../../contexts/CartContext';
+import {useContext} from 'react'
 
 const ProductCard = ({ product }) => {
-  const { addToCart } = useCart();
+  const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
     addToCart(product);

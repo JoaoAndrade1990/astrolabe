@@ -1,9 +1,10 @@
 import { Navbar, Nav, Form, FormControl, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCart } from '../hooks/cart';
+import CartContext from '../contexts/CartContext';
+import {useContext} from 'react'
 
 const Header = () => {
-  const { cart } = useCart();
+  const { cart } = useContext(CartContext);
 
   return (
     <Navbar expand='lg' className='border-bottom'>

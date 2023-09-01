@@ -6,7 +6,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import Layout from './components/Layout';
-import { CartProvider } from './hooks/cart.jsx';
+import { CartProvider } from './contexts/CartContext';
 
 function App() {
   return (

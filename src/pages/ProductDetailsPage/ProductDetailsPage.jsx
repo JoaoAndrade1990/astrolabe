@@ -3,11 +3,12 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import Loading from '../../components/Loading/Loading';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useCart } from '../../hooks/cart';
+import CartContext from '../../contexts/CartContext'; 
+import {useContext} from 'react'
 
 function ProductDetailsPage() {
   const { id } = useParams();
-  const { addToCart } = useCart();
+  const { addToCart } = useContext(CartContext);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
 
