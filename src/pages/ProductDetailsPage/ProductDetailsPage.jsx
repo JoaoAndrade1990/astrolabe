@@ -48,13 +48,17 @@ function ProductDetailsPage() {
               />
             </Col>
             <Col xs={12} md={6}>
+              <br />
               <h1>{result.title}</h1>
               <p>{result.description}</p>
               <p>Price: {result.price}€</p>
-              <Button variant='dark' onClick={handleAddToCart}>
+              <Button className="mb-4" variant='dark' onClick={handleAddToCart}>
                 Add to Cart
               </Button>
             </Col>
+          </Row>
+          <Row className="d-none d-md-block">
+          <br /><br /><br /><br /><br /><br />
           </Row>
         </>
       )}

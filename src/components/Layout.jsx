@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import PropTypes from 'prop-types';
 import Footer from './Footer/Footer';
 import Header from './Header';
