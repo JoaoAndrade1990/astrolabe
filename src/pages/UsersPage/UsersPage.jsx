@@ -3,6 +3,7 @@ import Loading from '../../components/Loading/Loading';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button} from 'react-bootstrap';
 import UserCard from '../../components/UserCard/UserCard';
+import ProductCard from '../../components/ProductCard/ProductCard';
 
 function UsersPage() {
     const [usersResults, setUsersResults] = useState([]);
@@ -28,10 +29,13 @@ function UsersPage() {
           <h1>Users Page</h1>
          <Row>  
           {usersResults.map((user) => (
-            <Col
+            <Col xs={12} sm={12} md={12} lg={6}
+
             key={user.id}
-            className=""
-            > {user.id}
+            className="mt-4 mb-4"
+            >
+            <UserCard user={user} />
+            
             </Col>
           ))}
           </Row>
