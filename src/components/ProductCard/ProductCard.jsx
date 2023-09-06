@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
     <Card className='product-card'>
       <div className='product-card-image-wrapper'>
         <Link
-          to={`/product/${product.id}`}
+          to={`/products/${product.id}`}
           className='text-decoration-none w-100'
         >
           <Card.Img
@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
         <div className='mb-3'>
           <Card.Title className='product-card-title'>
             <Link
-              to={`/product/${product.id}`}
+              to={`/products/${product.id}`}
               className='text-decoration-none text-black'
             >
               {product.title}
@@ -64,6 +64,7 @@ ProductCard.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 

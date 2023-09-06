@@ -1,9 +1,8 @@
 import axios from 'axios';
 import Loading from '../../components/Loading/Loading';
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Button} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import UserCard from '../../components/UserCard/UserCard';
-import ProductCard from '../../components/ProductCard/ProductCard';
 
 function UsersPage() {
     const [usersResults, setUsersResults] = useState([]);

@@ -19,8 +19,14 @@ const Header = () => {
           className='d-flex justify-content-between'
         >
           <Nav>
-            <Nav.Link as={Link} to='/category'>
+            <Nav.Link as={Link} to='/products'>
               Shop
+            </Nav.Link>
+          </Nav>
+
+          <Nav>
+            <Nav.Link as={Link} to='/users'>
+              Users
             </Nav.Link>
           </Nav>
 
@@ -43,9 +49,6 @@ const Header = () => {
               <span style={{ color: 'black', marginLeft: '6px' }}>
                 {cart.length !== 0 ? cart.length : null}
               </span>
-            </Nav.Link>
-            <Nav.Link as={Link} to='/login'>
-              Login
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
