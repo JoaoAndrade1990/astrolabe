@@ -30,7 +30,7 @@ function UserDetailsPage() {
         <Loading />
       ) : (
         <>
-        <br />
+          <br />
           <h1>Profile Page</h1>
           <br />
           <br />
@@ -63,15 +63,38 @@ function UserDetailsPage() {
               <br />
               <Row>
                 <Col xs={4} sm={4} md={4} lg={4}>
-                    <img className="image" src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" /></Col>
+                  <img
+                    className="image"
+                    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                    alt=""
+                  />
+                </Col>
                 <Col xs={4} sm={4} md={4} lg={4}>
-                    <img className="image" src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg" alt="" /></Col>
+                  <img
+                    className="image"
+                    src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
+                    alt=""
+                  />
+                </Col>
                 <Col xs={4} sm={4} md={4} lg={4}>
-                    <img className="image" src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg" alt="" /></Col>
+                  <img
+                    className="image"
+                    src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
+                    alt=""
+                  />
+                </Col>
               </Row>
-              <br />
             </Col>
           </Row>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </>
       )}
     </Container>
