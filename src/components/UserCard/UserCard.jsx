@@ -1,8 +1,17 @@
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
+import UserDetailsPage from '../../pages/UserDetailsPage/UserDetailsPage';
+import { useNavigate } from 'react-router-dom';
 
 const UserCard = ({ user }) => {
   console.log(user);
+  const navigate = useNavigate();
+  
+  const navigateToUser = () => {
+    navigate(`/users/${user.id}`)
+    console.log(user.id);
+  } 
+
   return (
     <Card className="user-card p-4">
       <Card.Title className="user-card-title text-capitalize">
@@ -14,6 +23,7 @@ const UserCard = ({ user }) => {
       <Card.Text><b>Phone:</b> {user.phone}</Card.Text>
       <Card.Text className="text-capitalize"><b>Adress: </b>{user.address.street}, no. {user.address.number}, (zipcode) {user.address.zipcode} {user.address.city}  </Card.Text>
       <Button 
+      onClick={() => navigateToUser()}
       className="user-card-details-button btn-md" 
       variant='dark'
       >See Details</Button>
@@ -27,6 +37,7 @@ UserCard.propTypes = {
       firstname: PropTypes.string.isRequired,
       lastname: PropTypes.string.isRequired,
     }),
+    id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
