@@ -58,7 +58,7 @@ function ProductDetailsPage() {
             </Col>
           </Row>
           <Row className="d-none d-md-block">
-          <br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br /><br /> <br /> <br />
           </Row>
         </>
       )}

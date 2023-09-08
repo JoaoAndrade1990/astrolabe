@@ -22,9 +22,7 @@ const Header = () => {
             <Nav.Link as={Link} to='/products'>
               Shop
             </Nav.Link>
-          </Nav>
-
-          <Nav>
+            
             <Nav.Link as={Link} to='/users'>
               Users
             </Nav.Link>
@@ -50,7 +48,11 @@ const Header = () => {
                 {cart.length !== 0 ? cart.length : null}
               </span>
             </Nav.Link>
+            <Nav.Link as={Link} to='/login'>
+              Login
+            </Nav.Link>
           </Nav>
+
         </Navbar.Collapse>
       </div>
     </Navbar>

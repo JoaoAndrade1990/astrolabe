@@ -95,6 +95,7 @@ function UserDetailsPage() {
           <br />
           <br />
           <br />
+          <br />
         </>
       )}
     </Container>
