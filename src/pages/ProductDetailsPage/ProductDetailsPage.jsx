@@ -5,12 +5,14 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import CartContext from '../../contexts/CartContext'; 
 import {useContext} from 'react'
+import usersProducts from '../../constants/index';
 
 function ProductDetailsPage() {
   const { id } = useParams();
   const { addToCart } = useContext(CartContext);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(usersProducts);
 
   useEffect(() => {
     axios
@@ -52,6 +54,7 @@ function ProductDetailsPage() {
               <h1>{result.title}</h1>
               <p>{result.description}</p>
               <p>Price: {result.price}€</p>
+              
               <Button className="mb-4" variant='dark' onClick={handleAddToCart}>
                 Add to Cart
               </Button>

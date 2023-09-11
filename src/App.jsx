@@ -7,6 +7,7 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import UsersPage from './pages/UsersPage/UsersPage';
 import UserDetailsPage from './pages/UserDetailsPage/UserDetailsPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import Layout from './components/Layout';
 import { CartProvider } from './contexts/CartContext';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/checkout' element={<CheckoutPage />} />
             <Route path='/users' element={<UsersPage />} />
             <Route path='/users/:id' element={<UserDetailsPage />} />
+            <Route path='login' element={<LoginPage />} />
           </Routes>
         </Layout>
       </Router>
