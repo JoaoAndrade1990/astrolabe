@@ -8,11 +8,24 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CartContext from "../contexts/CartContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
+  const [results, setResults] = useState([]);
+
+
+const handleSearch = (event) => {
+  const textToSearch = event.target.value;
+  axios.get('https://fakestoreapi.com/products').then((res) => {
+    setResults(res.data); 
+  const filteredProducts = res.data.filter((product) => product.title.toLowerCase().includes(textToSearch.toLowerCase()));
+    console.log(filteredProducts);
+})};
+
+
 
   return (
     <Navbar expand="lg" className="border-bottom">
@@ -20,18 +33,7 @@ const Header = () => {
         <Navbar.Brand as={Link} to="/">
           <img src="/src/assets/logo.svg" alt="Logo" />
         </Navbar.Brand>
-        <Form className="d-flex">
-          <InputGroup>
-            <InputGroup.Text>
-              <i className="bi bi-search"></i>
-            </InputGroup.Text>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="border-1 border-bottom mr-2"
-            />
-          </InputGroup>
-        </Form>
+        
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -42,6 +44,19 @@ const Header = () => {
               Users
             </Nav.Link>
           </Nav>
+          <Form className="d-flex">
+          <InputGroup>
+            <InputGroup.Text>
+              <i className="bi bi-search"></i>
+            </InputGroup.Text>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              onChange={handleSearch}
+              className="border-1 border-bottom mr-2"
+            />
+          </InputGroup>
+        </Form>
           <Nav>
             <Nav.Link as={Link} to="/cart">
               <i className="bi bi-cart"></i>
