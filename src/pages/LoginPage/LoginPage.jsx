@@ -1,37 +1,58 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
+import UserContext from '../../contexts/UserContext';
+import Cookies from "js-cookie";
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loginSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const [data, setData] = useState({});
+
+  const {users, setUser} = useContext(UserContext);
+
+  const navigate = useNavigate()
+
+  const handleChange = (event) =>{
+    setData({...data, [event.target.name]:event.target.value});
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    if (!email || !password) {
-      setError('Campos obrigatórios');
+    if (!data.username || !data.password) {
+      setError('All fields are required');
       return;
     }
 
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      if (email === 'email@gmail.com' && password === '123456') {
-        setLoginSuccess(true);
-        setError('');
-      } else {
-        setLoginSuccess(false);
-        setError('Credenciais inválidas. Tente novamente.');
-      }
-    }, 500);
+      axios.post("https://fakestoreapi.com/auth/login",data)
+        .then(response => {
+          console.log(response);
+          if (response.data.token) {
+            Cookies.set("user_fake_token", response.data.token);
+            setLoading(false);
+            setError("")
+            const userInfo = users.filter(user => user.username === data.username)
+            setUser(userInfo[0]);
+            navigate("/");
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          setLoading(false);
+          setError(error.response.data);
+        })
   };
+
+
 
   return (
     <Container>
@@ -47,17 +68,19 @@ function LoginPage() {
                 <h3 className='text-center'>Welcome Back</h3>
                 <br />
                 <div className={`form-group ${error ? 'has-error' : ''}`}>
-                  <label htmlFor='email'>Email address</label>
+                  <label htmlFor='username'>Username</label>
                   <input
-                    type='email'
+                    type='text'
                     className='form-control'
-                    id='email'
-                    aria-describedby='email'
-                    placeholder='Enter email'
+                    id='username'
+                    aria-describedby='username'
+                    placeholder='Enter username'
+                    name='username'
+                    onChange={handleChange}
                   />
-                  <small id='emailHelp' className='form-text text-muted'>
+                  {/* <small id='emailHelp' className='form-text text-muted'>
                     We'll never share your email with anyone else.
-                  </small>
+                  </small> */}
                 </div>
                 <br />
                 <div className={`form-group ${error ? 'has-error' : ''}`}>
@@ -67,6 +90,8 @@ function LoginPage() {
                     className='form-control'
                     id='password'
                     placeholder='Enter Password'
+                    name='password'
+                    onChange={handleChange}
                   />
                 </div>
                 <br />
