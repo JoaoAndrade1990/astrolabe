@@ -1,27 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard'; // Import the ProductCard component
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import './CategoryPage.css';
 import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
+import SearchContext from '../../contexts/SearchContext';
 
 function CategoryPage() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const { searchTerm = '' } = useContext(SearchContext);
 
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products').then((res) => {
-      setResults(res.data);
+      let filteredProducts = res.data;
+      if (searchTerm) {
+        filteredProducts = res.data.filter((product) =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+      setResults(filteredProducts);
       setLoading(false);
     });
 
     axios.get('https://fakestoreapi.com/products/categories').then((res) => {
       setCategories(res.data);
     });
-  }, []);
+  }, [searchTerm]);
 
   const filteredProducts = (category) => {
     setSelectedCategory(category === selectedCategory ? null : category);

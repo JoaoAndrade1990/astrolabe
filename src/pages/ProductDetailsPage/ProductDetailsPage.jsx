@@ -3,8 +3,8 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import Loading from '../../components/Loading/Loading';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import CartContext from '../../contexts/CartContext'; 
-import {useContext} from 'react'
+import CartContext from '../../contexts/CartContext';
+import { useContext } from 'react';
 import usersProducts from '../../constants/index';
 
 function ProductDetailsPage() {
@@ -54,15 +54,13 @@ function ProductDetailsPage() {
               <h1>{result.title}</h1>
               <p>{result.description}</p>
               <p>Price: {result.price}€</p>
-              
-              <Button className="mb-4" variant='dark' onClick={handleAddToCart}>
+
+              <Button className='mb-4' variant='dark' onClick={handleAddToCart}>
                 Add to Cart
               </Button>
             </Col>
           </Row>
-          <Row className="d-none d-md-block">
-          <br /><br /><br /><br /><br /><br /> <br /> <br />
-          </Row>
+          <Row className='d-none d-md-block'></Row>
         </>
       )}
     </Container>

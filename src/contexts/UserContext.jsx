@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const UserContext = createContext();
 
-export default UserContext
+export default UserContext;
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -12,22 +12,21 @@ export const UserContextProvider = ({ children }) => {
 
   const fetchAllUsers = () => {
     axios
-      .get("https://fakestoreapi.com/users")
+      .get('https://fakestoreapi.com/users')
       .then((response) => setUsers(response.data))
       .catch((err) => console.error(err));
   };
 
-
   const fetchAllProducts = () => {
     axios
-      .get("https://fakestoreapi.com/products")
+      .get('https://fakestoreapi.com/products')
       .then((response) => setProductsList(response.data))
       .catch((err) => console.error(err));
   };
 
   useEffect(() => {
     fetchAllUsers();
-    fetchAllProducts()
+    fetchAllProducts();
   }, []);
 
   return (

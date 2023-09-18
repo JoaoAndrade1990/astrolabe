@@ -4,9 +4,8 @@ import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext';
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -16,13 +15,13 @@ function LoginPage() {
 
   const [data, setData] = useState({});
 
-  const {users, setUser} = useContext(UserContext);
+  const { users, setUser } = useContext(UserContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleChange = (event) =>{
-    setData({...data, [event.target.name]:event.target.value});
-  }
+  const handleChange = (event) => {
+    setData({ ...data, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,26 +32,27 @@ function LoginPage() {
     }
 
     setLoading(true);
-      axios.post("https://fakestoreapi.com/auth/login",data)
-        .then(response => {
-          console.log(response);
-          if (response.data.token) {
-            Cookies.set("user_fake_token", response.data.token);
-            setLoading(false);
-            setError("")
-            const userInfo = users.filter(user => user.username === data.username)
-            setUser(userInfo[0]);
-            navigate("/");
-          }
-        })
-        .catch(error => {
-          console.error(error);
+    axios
+      .post('https://fakestoreapi.com/auth/login', data)
+      .then((response) => {
+        console.log(response);
+        if (response.data.token) {
+          Cookies.set('user_fake_token', response.data.token);
           setLoading(false);
-          setError(error.response.data);
-        })
+          setError('');
+          const userInfo = users.filter(
+            (user) => user.username === data.username
+          );
+          setUser(userInfo[0]);
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+        setError(error.response.data);
+      });
   };
-
-
 
   return (
     <Container>
@@ -116,19 +116,6 @@ function LoginPage() {
               </Form>
             </div>
           </Row>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </>
       )}
     </Container>
