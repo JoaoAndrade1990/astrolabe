@@ -73,7 +73,7 @@ const Header = () => {
             </Nav.Link>
             {Object.keys(user).length > 0 ? (
               <Nav.Link as={Link} to={`/users/${user.id}`}>
-                <p>{user?.username}ola</p>
+                <p>{user?.username}</p>
               </Nav.Link>
             ) : (
               location.pathname !== '/login' && (

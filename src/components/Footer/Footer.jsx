@@ -47,21 +47,6 @@ const Footer = () => {
                 </InputGroup>
               </Form>
             </Col>
-            <Col md={2} className='mb-sm-4 mb-md-0'>
-              <h5>Shop</h5>
-              <ul className='list-unstyled'>
-                {categories.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      to={`/${item}`}
-                      className='text-muted text-decoration-none text-capitalize'
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Col>
           </Row>
         </Container>
       </footer>
