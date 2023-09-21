@@ -11,8 +11,10 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Footer.css';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation()
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <>
+    <Container style={location.pathname ==="/products" || location.pathname ==="/users" || location.pathname ==="/" || location.pathname === "/cart"? {minWidth:"100vw", padding:"0", margin:"50px auto 0 auto",position:"relative", bottom:"0"} : {padding:"0",minWidth:"100vw", position:"fixed", bottom:"0", margin:"50px auto 0 auto"}}>
       <footer className='border-top mt-4'>
         <Container className='py-4'>
           <Row className='d-flex justify-content-center'>
@@ -58,7 +60,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 

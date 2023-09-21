@@ -52,7 +52,8 @@ function ProductDetailsPage() {
   };
 
   return (
-    <Container style={{ marginBottom: '100px' }}>
+    <Container style={{ 
+      marginBottom: '100px' }}>
       {loading ? (
         <Loading />
       ) : (
